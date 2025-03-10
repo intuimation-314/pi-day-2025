@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{The Evolution of $\pi$: Beyond Newton}
+\author{Your Name}
+\date{March 14, 2025}
+\maketitle
+
+\section*{Introduction}
+
+\textbf{First of all, Happy $\pi$ Day, folks!} ��  
+
+$\pi$ is perhaps the most common mathematical constant we encounter in life. \textbf{Circles are everywhere}—in nature, in the wheels we use, in the planets orbiting our sun. It’s probably the \textbf{first universal constant} we intuitively discover.  
+
+At its core, $\pi$ is simply the \textbf{ratio of a circle’s circumference to its diameter}:
+
+\[
+\pi = \frac{C}{d} \approx 3.14159
+\]
+
+This means that if you \textbf{unfold the perimeter} of a perfect circle, it would fit \textbf{three diameters exactly}, with a \textbf{tiny bit left over}.  
+
+But that’s not how we compute $\pi$. Measuring a circle directly, no matter how \textbf{precise our tools}, always leads to \textbf{errors}. Engineers might use $\pi \approx 3.14$ or even just $3$, and to the naked eye, \textbf{a circle would still look perfect}.  
+
+But mathematicians? \textbf{They aren’t satisfied.}  
+
+They want \textbf{precision}, and for that, we must turn to \textbf{mathematics}. The quest for $\pi$’s precision has been a \textbf{mathematical obsession} for thousands of years, evolving alongside our \textbf{mathematical tools and computers}.  
+
+But $\pi$’s precision isn’t just about \textbf{math for the sake of math}. Why is it important then? That’s something we will answer later in this video.  
+
+First Let's go over the \textbf{three distinct revolutions} in $\pi$ computation:  
+
+\begin{enumerate}
+    \item \textbf{The Geometric Era (250 BCE – 1630 CE)}: When $\pi$ was calculated using \textbf{polygons}, requiring \textbf{millions of sides} just to reach a few decimal places.  
+    \item \textbf{The Infinite Series Era (1600s – 1980s)}: When $\pi$ computations \textbf{accelerated dramatically} using calculus and infinite series.  
+    \item \textbf{The Modern Algorithm Era (1980 – Present)}: When $\pi$'s precision skyrocketed to \textbf{trillions of digits}, thanks to \textbf{high-speed algorithms and supercomputers}.  
+\end{enumerate}
+
+Let’s begin.
+
+And to put this into perspective, we will also compare how much \textbf{less effort} is required in each era to compute the same number of decimal places. Let’s begin.
+
+\section*{Chapter 1: The Geometric Era (250 BCE – 1630 CE)}
+
+The first true breakthrough in computing $\pi$ came from \textbf{Archimedes} around \textbf{250 BCE}. Before Archimedes, civilizations such as the \textbf{Babylonians and Egyptians} approximated $\pi$ through direct measurements. However, these methods were experimental, and they lacked a rigorous mathematical foundation.  
+
+Instead of measuring circles directly, he used \textbf{polygons inscribed and circumscribed around a circle}.  
+
+He started with a \textbf{6-sided polygon} and successively \textbf{doubled} the number of sides:  
+\[
+6 \to 12 \to 24 \to 48 \to 96
+\]
+
+Using these polygons, he calculated the following bounds for $\pi$:
+
+\[
+\frac{223}{71} < \pi < \frac{22}{7}
+\]
+
+or numerically:
+
+\[
+3.1408 < \pi < 3.1429
+\]
+
+This was the most accurate estimate of $\pi$ for over \textbf{1,500 years}.  
+
+Even by \textbf{1630}, after centuries of refinement, the best polygon-based calculations could only determine $\pi$ to \textbf{39 decimal places}. And just to achieve that, polygon methods required \textbf{millions of sides}. This was inefficient, and mathematicians needed a new approach.
+
+\section*{Chapter 2: The Infinite Series Era (1600s – 1980s)}
+
+In the \textbf{17th century}, the discovery of \textbf{calculus} transformed how $\pi$ was computed. Mathematicians replaced geometric approximations with \textbf{infinite summations}.  
+
+\textbf{Isaac Newton} represented $\pi$ using an integral of the quarter-circle:
+
+\[
+\frac{\pi}{8} = \int_0^{1/2} \sqrt{1 - x^2} \, dx
+\]
+
+Expanding the function as a binomial series:
+
+\[
+\sqrt{1 - x^2} = 1 - \frac{x^2}{2} - \frac{x^4}{8} - \dots
+\]
+
+Newton computed $\pi$ without polygons for the first time! For a deeper dive, \textbf{Veritasium has a fantastic video on this topic—check it out!}
+
+But the revolution continued. \textbf{James Gregory (1671)} and \textbf{Gottfried Leibniz (1674)} derived the Taylor series for $\tan^{-1}(x)$:
+
+\[
+\tan^{-1} x = x - \frac{x^3}{3} + \frac{x^5}{5} - \dots
+\]
+
+Setting \( x = 1 \), they obtained:
+
+\[
+\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \dots
+\]
+
+The breakthrough came in \textbf{1706}, when \textbf{John Machin}, inspired by the arctan series, introduced:
+
+\[
+\frac{\pi}{4} = 4 \tan^{-1} \frac{1}{5} - \tan^{-1} \frac{1}{239}
+\]
+
+This converged \textbf{100 times faster} than the basic arctan series. Using it, Machin calculated $\pi$ to \textbf{100 decimal places} by hand.
+
+By the \textbf{20th century}, early computers rapidly accelerated $\pi$ calculations:
+
+\begin{itemize}
+    \item \textbf{1949}: The ENIAC computer computed $\pi$ to \textbf{2,037 digits} in 70 hours.
+    \item \textbf{1973}: Computers reached \textbf{1 million digits}.
+\end{itemize}
+
+Even with computing power, older formulas remained too slow to push $\pi$ much further.
+
+\section*{The Modern Algorithm Era: The 1980s Revolution in $\pi$ Computation}
+
+We are currently in the third era of $\pi$ calculation. It began around  1980 when mathematicians discovered how to utilise a combination of three independent developments.
+
+First, the \textbf{Fast Fourier Transform (FFT)} algorithm significantly sped up multiplication—an essential operation in all $\pi$ computations. With FFT, multiplying long numbers became nearly linear in time, drastically reducing computation time.
+
+Second, new high-performance algorithms were developed, specifically designed for $\pi$.
+
+The biggest breakthrough occoured when \textbf{Srinivasa Ramanujan} discovered formula which converged far faster than previous methods like Machin's formula:
+
+\[
+\frac{1}{\pi} = \frac{2\sqrt{2}}{9801} \sum_{n=0}^{\infty} \frac{(4n)! (1103 + 26390n)}{(n!)^4 396^{4n}}
+\]
+
+Despite the astonishing accuracy of his formula, Ramanujan never provided a formal proof for it—yet decades later, mathematicians confirmed he was right all along.
+
+Each term of this series added \textbf{8 decimal places}!
+
+Later in 1989, The Chudnovsky brothers (David and Gregory Chudnovsky) modified Ramanujan’s method and optimized the series even further:
+
+\[
+\frac{1}{\pi} = 12 \sum_{n=0}^{\infty} \frac{(-1)^n (6n)! (13591409 + 545140134n)}{(3n)! (n!)^3 640320^{3n + 3/2}}
+\]
+
+Each term in this formula adds \textbf{15 digits}—twice as fast as Ramanujan's
+
+Third, supercomputing advancements made it possible to compute $\pi$ to billions, then trillions of digits.
+
+Today, $\pi$ has been computed to over \textbf{100 trillion digits}, a feat achieved using Google Cloud computing.
+
+In 2022, Google computed $\pi$ to over \textbf{100 trillion digits}. This required:  
+\begin{itemize}
+    \item Over \textbf{157 days of computation}.
+    \item \textbf{82,000 terabytes of storage}.
+    \item Electricity costs exceeding \textbf{\$200,000}.
+\end{itemize}
+
+\end{document}
