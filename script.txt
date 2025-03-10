@@ -4,34 +4,42 @@
 
 \begin{document}
 
-\title{The Evolution of $\pi$: Beyond Newton}
+\title{The Evolution of $\pi$: Past, Present and Future}
 \author{Your Name}
 \date{March 14, 2025}
 \maketitle
 
 \section*{Introduction}
 
-\textbf{First of all, Happy $\pi$ Day, folks!} ��  
-
-$\pi$ is perhaps the most common mathematical constant we encounter in life. \textbf{Circles are everywhere}—in nature, in the wheels we use, in the planets orbiting our sun. It’s probably the \textbf{first universal constant} we intuitively discover.  
+$\pi$ is one of the most fundamental mathematical constants we encounter early in our life. It comes from Circles which are everywhere—in nature, in the wheels we use, in the ripples on water, in the orbits of planets, in the very structure of galaxies. It is woven into the fabric of the universe—perhaps the first universal constant we intuitively discover.
 
 At its core, $\pi$ is simply the \textbf{ratio of a circle’s circumference to its diameter}:
 
 \[
-\pi = \frac{C}{d} \approx 3.14159
+\pi = \frac{C}{d} \approx 3.14
 \]
 
 This means that if you \textbf{unfold the perimeter} of a perfect circle, it would fit \textbf{three diameters exactly}, with a \textbf{tiny bit left over}.  
 
-But that’s not how we compute $\pi$. Measuring a circle directly, no matter how \textbf{precise our tools}, always leads to \textbf{errors}. Engineers might use $\pi \approx 3.14$ or even just $3$, and to the naked eye, \textbf{a circle would still look perfect}.  
+But here's is the catch - that’s not how we actually compute $\pi$. Measuring a circle directly, no matter how \textbf{precise our tools}, always leads to \textbf{errors}. Engineers might use $\pi \approx 3.14$ or even just $3$, and to the naked eye, \textbf{a circle would still look perfect}.  
 
-But mathematicians? \textbf{They aren’t satisfied.}  
+But mathematicians? \textbf{They aren’t satisfied.} They want infinite precision.
 
-They want \textbf{precision}, and for that, we must turn to \textbf{mathematics}. The quest for $\pi$’s precision has been a \textbf{mathematical obsession} for thousands of years, evolving alongside our \textbf{mathematical tools and computers}.  
+For centuries, the quest for π’s accuracy has driven both mathematics and computing forward, leading to formulas that look almost unnatural—some even downright terrifying in their complexity!
 
-But $\pi$’s precision isn’t just about \textbf{math for the sake of math}. Why is it important then? That’s something we will answer later in this video.  
+Even with the fastest algorithm we have today (the Chudnovsky algorithm), in 2022, Google managed to compute π to over 100 trillion digits. And guess what? That required:
 
-First Let's go over the \textbf{three distinct revolutions} in $\pi$ computation:  
+\begin{itemize}
+    \item \textbf{157 days of computation}.
+    \item \textbf{82,000 terabytes of storage}.
+    \item Over \textbf{\$200,000 in electricity costs}.
+\end{itemize}
+
+At this point, you might be wondering—why? Why does π get so ridiculously complicated? And why do we even need to compute more and more digits?
+
+Well, computing π isn’t just about math for the sake of math—there’s a much bigger reason behind it. And that’s exactly what we’ll explore in this video. 
+
+To understand why π is so important—and why we keep chasing more digits—we need to look back in time. π wasn’t always known with such precision. The journey of π’s discovery spans thousands of years, and we can divide its history into three major eras:
 
 \begin{enumerate}
     \item \textbf{The Geometric Era (250 BCE – 1630 CE)}: When $\pi$ was calculated using \textbf{polygons}, requiring \textbf{millions of sides} just to reach a few decimal places.  
@@ -39,22 +47,19 @@ First Let's go over the \textbf{three distinct revolutions} in $\pi$ computation
     \item \textbf{The Modern Algorithm Era (1980 – Present)}: When $\pi$'s precision skyrocketed to \textbf{trillions of digits}, thanks to \textbf{high-speed algorithms and supercomputers}.  
 \end{enumerate}
 
-Let’s begin.
-
-And to put this into perspective, we will also compare how much \textbf{less effort} is required in each era to compute the same number of decimal places. Let’s begin.
-
-\section*{Chapter 1: The Geometric Era (250 BCE – 1630 CE)}
+\section*{Era 1: The Geometric Era (250 BCE – 1630 CE)}
 
 The first true breakthrough in computing $\pi$ came from \textbf{Archimedes} around \textbf{250 BCE}. Before Archimedes, civilizations such as the \textbf{Babylonians and Egyptians} approximated $\pi$ through direct measurements. However, these methods were experimental, and they lacked a rigorous mathematical foundation.  
 
-Instead of measuring circles directly, he used \textbf{polygons inscribed and circumscribed around a circle}.  
+Archimedes took a completely different approach. Instead of measuring circles, he trapped a circle between two polygons—one inside (inscribed) and one outside (circumscribed).  
 
-He started with a \textbf{6-sided polygon} and successively \textbf{doubled} the number of sides:  
+He started with a hexagon (6-sided polygon) and doubled the number of sides, making the shape increasingly circular:
+
 \[
 6 \to 12 \to 24 \to 48 \to 96
 \]
 
-Using these polygons, he calculated the following bounds for $\pi$:
+By the time he reached a 96-sided polygon, he calculated the bounds for π:
 
 \[
 \frac{223}{71} < \pi < \frac{22}{7}
@@ -66,18 +71,18 @@ or numerically:
 3.1408 < \pi < 3.1429
 \]
 
-This was the most accurate estimate of $\pi$ for over \textbf{1,500 years}.  
+This was the most accurate estimate of $\pi$ for over \textbf{1,500 years}.  Even today, the fraction 22/7 (used in schools as an approximation for π) comes from Archimedes’ work. 
 
 Even by \textbf{1630}, after centuries of refinement, the best polygon-based calculations could only determine $\pi$ to \textbf{39 decimal places}. And just to achieve that, polygon methods required \textbf{millions of sides}. This was inefficient, and mathematicians needed a new approach.
 
-\section*{Chapter 2: The Infinite Series Era (1600s – 1980s)}
+\section*{Phase 2: The Infinite Series Era (1600s – 1980s)}
 
 In the \textbf{17th century}, the discovery of \textbf{calculus} transformed how $\pi$ was computed. Mathematicians replaced geometric approximations with \textbf{infinite summations}.  
 
-\textbf{Isaac Newton} represented $\pi$ using an integral of the quarter-circle:
+Newton computed $\pi$ without polygons for the first time! \textbf{Isaac Newton} represented $\pi$ using an integral of the quarter-circle:
 
 \[
-\frac{\pi}{8} = \int_0^{1/2} \sqrt{1 - x^2} \, dx
+\frac{\pi}{12} + \frac{\sqrt{3}}{8} = \int_0^{1/2} \sqrt{1 - x^2} \, dx
 \]
 
 Expanding the function as a binomial series:
@@ -85,37 +90,29 @@ Expanding the function as a binomial series:
 \[
 \sqrt{1 - x^2} = 1 - \frac{x^2}{2} - \frac{x^4}{8} - \dots
 \]
+This was a game changer.
 
-Newton computed $\pi$ without polygons for the first time! For a deeper dive, \textbf{Veritasium has a fantastic video on this topic—check it out!}
+For a deeper dive, \textbf{Veritasium has a fantastic video on this topic—check it out!}
 
-But the revolution continued. \textbf{James Gregory (1671)} and \textbf{Gottfried Leibniz (1674)} derived the Taylor series for $\tan^{-1}(x)$:
-
-\[
-\tan^{-1} x = x - \frac{x^3}{3} + \frac{x^5}{5} - \dots
-\]
-
-Setting \( x = 1 \), they obtained:
-
-\[
-\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \dots
-\]
-
-The breakthrough came in \textbf{1706}, when \textbf{John Machin}, inspired by the arctan series, introduced:
+But the quest for $\pi$ continued. The breakthrough came in \textbf{1706}, when \textbf{John Machin}, inspired by the arctan series, introduced an algorithm that converged much faster:
 
 \[
 \frac{\pi}{4} = 4 \tan^{-1} \frac{1}{5} - \tan^{-1} \frac{1}{239}
 \]
 
-This converged \textbf{100 times faster} than the basic arctan series. Using it, Machin calculated $\pi$ to \textbf{100 decimal places} by hand.
+This converged \textbf{100 times faster} than the basic arctan series and newtons formula. Using it, Machin calculated $\pi$ to \textbf{100 decimal places} by hand.
 
-By the \textbf{20th century}, early computers rapidly accelerated $\pi$ calculations:
+For over two centuries, mathematicians followed in Machin’s footsteps, manually pushing π further, digit by digit.
 
-\begin{itemize}
-    \item \textbf{1949}: The ENIAC computer computed $\pi$ to \textbf{2,037 digits} in 70 hours.
-    \item \textbf{1973}: Computers reached \textbf{1 million digits}.
-\end{itemize}
+By the \textbf{20th century}, mechanical computers were already invented rapidly accelerated $\pi$ calculations, We no longer needed computaions by hand.
 
-Even with computing power, older formulas remained too slow to push $\pi$ much further.
+The first major leap happened in 1949, when the ENIAC computer calculated 2,037 digits of π in just 70 hours.
+
+As computing power grew, so did π records:
+- 1973: Computers pushed π past 1 million digits.
+- 1980s: Mathematicians realized older formulas were too slow for modern computers.
+
+A new era of π computation had begun.
 
 \section*{The Modern Algorithm Era: The 1980s Revolution in $\pi$ Computation}
 
@@ -123,17 +120,17 @@ We are currently in the third era of $\pi$ calculation. It began around  1980 wh
 
 First, the \textbf{Fast Fourier Transform (FFT)} algorithm significantly sped up multiplication—an essential operation in all $\pi$ computations. With FFT, multiplying long numbers became nearly linear in time, drastically reducing computation time.
 
-Second, new high-performance algorithms were developed, specifically designed for $\pi$.
+Second major breakthrough was the development of, new high-performance algorithms, specifically designed for $\pi$.
 
-The biggest breakthrough occoured when \textbf{Srinivasa Ramanujan} discovered formula which converged far faster than previous methods like Machin's formula:
+\textbf{Srinivasa Ramanujan} discovered miraculous formula which converged far faster than previous methods like Machin's formula:
 
 \[
 \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} \sum_{n=0}^{\infty} \frac{(4n)! (1103 + 26390n)}{(n!)^4 396^{4n}}
 \]
 
-Despite the astonishing accuracy of his formula, Ramanujan never provided a formal proof for it—yet decades later, mathematicians confirmed he was right all along.
-
 Each term of this series added \textbf{8 decimal places}!
+
+Despite the astonishing accuracy of his formula, Ramanujan never provided a formal proof for it—yet decades later, mathematicians confirmed he was right all along.
 
 Later in 1989, The Chudnovsky brothers (David and Gregory Chudnovsky) modified Ramanujan’s method and optimized the series even further:
 
@@ -143,15 +140,61 @@ Later in 1989, The Chudnovsky brothers (David and Gregory Chudnovsky) modified R
 
 Each term in this formula adds \textbf{15 digits}—twice as fast as Ramanujan's
 
-Third, supercomputing advancements made it possible to compute $\pi$ to billions, then trillions of digits.
+Third, supercomputer advances made it possible to explode $\pi$ to billions, then trillions of digits.
 
-Today, $\pi$ has been computed to over \textbf{100 trillion digits}, a feat achieved using Google Cloud computing.
+1989: The Chudnovsky brothers calculated 1 billion digits—a world record at the time.
+1999: π was computed to 68 billion digits.
+2019: Google Cloud reached 31.4 trillion digits.
+2022: The record hit 100 trillion digits!
 
-In 2022, Google computed $\pi$ to over \textbf{100 trillion digits}. This required:  
-\begin{itemize}
-    \item Over \textbf{157 days of computation}.
-    \item \textbf{82,000 terabytes of storage}.
-    \item Electricity costs exceeding \textbf{\$200,000}.
-\end{itemize}
+\section*{The Future of $\pi$ Computation}
+
+Today, $\pi$ has been computed to \textbf{over 100 trillion digits}. But how far can we go? For decades, the goal was to compute $\pi$ from the beginning to as many digits as possible. But since the 1990s, researchers have shifted their focus to a new challenge: \textbf{computing individual digits at extreme positions without needing all previous ones}.  
+
+A major breakthrough came in \textbf{1995} with the discovery of the \textbf{BBP Algorithm (Bailey-Borwein-Plouffe)}:
+
+\[
+\pi = \sum_{n=0}^{\infty} \frac{1}{16^n} \left( \frac{4}{8n+1} - \frac{2}{8n+4} - \frac{1}{8n+5} - \frac{1}{8n+6} \right)
+\]
+
+For the first time, this formula allowed researchers to compute the hexadecimal digits \textbf{ specific (base-16) of $\pi$ without calculating all previous digits}. However, this method only works for hexadecimal and binary digits—\textbf{we still don’t have an efficient way to compute individual decimal digits of $\pi$}.  
+
+\section*{Why Compute More Digits of $\pi$?}
+
+For most real-world applications, we don’t actually need trillions of digits of $\pi$. In fact, just \textbf{10 digits} are enough for engineering and scientific calculations. \textbf{39 digits} are enough to calculate the \textbf{volume of the observable universe} to atomic precision. Even high-precision physics simulations, space exploration, and quantum mechanics rarely require more than a \textbf{few hundred digits}.  
+
+And yet, we continue computing $\pi$ to \textbf{trillions of digits}. So, why do we do it?  
+
+\subsection*{1. Testing Computers and Algorithms}
+
+One of the biggest reasons is \textbf{testing computers and algorithms}. Computing $\pi$ requires an enormous number of calculations—\textbf{trillions of arithmetic operations}—which makes it the \textbf{perfect stress test for modern processors}.  
+
+In fact, companies like \textbf{Intel and AMD} have used $\pi$ calculations to \textbf{detect hidden errors in processors} before releasing them to the public. If a CPU or supercomputer can compute $\pi$ \textbf{correctly for trillions of digits}, it means the hardware is \textbf{stable and reliable}.  
+
+\subsection*{2. The Unsolved Mysteries of $\pi$}
+
+But it’s not just about testing hardware—Mathematicians are also searching for \textbf{patterns in $\pi$'s digits}. Despite computing \textbf{trillions of digits}, no repeating pattern has ever been found. But could there be a hidden structure? Could $\pi$ be linked to \textbf{deep, undiscovered properties in number theory}?  
+
+By computing more digits, researchers can analyze $\pi$ statistically and \textbf{search for clues to its nature}.
+
+\subsection*{3. The Competitive and Cultural Appeal}
+
+The quest for $\pi$ is also a \textbf{global challenge}—a battle of \textbf{mathematicians, programmers, and supercomputers}.  
+
+Every new world record invites someone to \textbf{break it}. It’s a \textbf{symbol of mathematical curiosity} and human achievement.  
+
+And perhaps more importantly, $\pi$ is one of the few mathematical constants that \textbf{captivates the public}. It has been studied for over \textbf{4,000 years}, and yet, it remains \textbf{mysterious and infinite}.
+
+As long as these mysteries remain, the \textbf{quest for $\pi$ will never end}.
+
+With the rise of \textbf{quantum computing} it’s possible that we may one day compute $\pi$ at speeds unimaginable today. Even AI is starting to play a role in $\pi$ computations. AI models might analyze massive datasets of $\pi$'s digits to search for hidden structures or statistical anomalies.
+
+
+That brings us to the end of this video. 
+So, the next time you see π written as 3.14159, just remember—behind those digits lies a story of thousands of years of discovery, one that continues to unfold even today.
+
+If you enjoyed exploring the fascinating world of π, make sure to like, subscribe, and let me know in the comments—what do you think the future of π computation will look like?
+
+Thank you for watching, and Happy π Day!
 
 \end{document}
