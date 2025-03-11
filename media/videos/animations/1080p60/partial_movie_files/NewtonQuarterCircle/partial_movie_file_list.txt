@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/1644778225_1876151765_223132457.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/872335816_882663142_758838218.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/872335816_3890345977_1777222809.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/872335816_2548140818_1605141625.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/872335816_931388870_1211508289.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/NewtonQuarterCircle/872335816_3890345977_457298007.mp4'
