@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/1644778225_1257736514_223132457.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/872335816_2414027591_3034449731.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/872335816_235378148_179325338.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/872335816_681997396_310047624.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/872335816_3758295106_598967799.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ThinkingMuBot2/872335816_1141282389_1147126193.mp4'

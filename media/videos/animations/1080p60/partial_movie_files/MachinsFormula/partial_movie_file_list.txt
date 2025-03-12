@@ -1,0 +1,9 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/1644778225_1701604151_223132457.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_1704852926_1498403674.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_2660224828_1457732713.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_1141282389_3177688658.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_1281881062_3311780718.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_3153046278_30207774.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_3178973628_2713855014.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/MachinsFormula/872335816_2475379470_1565356441.mp4'

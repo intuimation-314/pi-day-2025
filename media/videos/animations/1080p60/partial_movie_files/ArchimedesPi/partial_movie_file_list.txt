@@ -7,5 +7,5 @@ file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/an
 file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_4077019133_814270227.mp4'
 file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_3176482301_740524151.mp4'
 file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_2120063632_2533265945.mp4'
-file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_414661711_4142496575.mp4'
-file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_1141282389_462508414.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_2689979027_4142496575.mp4'
+file 'file:C:/Users/Sumit Sah/Desktop/Manim Projects/pi-day-2025/media/videos/animations/1080p60/partial_movie_files/ArchimedesPi/872335816_1141282389_1048122906.mp4'
