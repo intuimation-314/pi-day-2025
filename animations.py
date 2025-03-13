@@ -771,3 +771,105 @@ class PiBreakthroughs(Scene):
 class Blank(Scene):
     def construct(self):
         self.wait(2)
+
+class FuturOfPI(Scene):
+    def construct(self):
+        title = Tex("The Future of ",  r"$\pi$", " computation").scale(1.2).shift(3*UP)
+        self.play(Write(title))
+
+                # Bot's body: μ symbol as the body of the bot
+        mu = MathTex(r"\mu").scale(5).set_color(BLUE).shift(LEFT + DOWN)
+        
+        # Eyes: white ovals for the eyes
+        left_eye_white = Ellipse(width=0.3, height=0.4, color=WHITE, fill_opacity=1).shift(UP * 0.6 + LEFT * 1.25 + DOWN)
+        right_eye_white = Ellipse(width=0.3, height=0.4, color=WHITE, fill_opacity=1).shift(UP * 0.6 + LEFT * 0.65 + DOWN)
+        left_eye_pupil = Dot(point=UP * 0.6 + LEFT * 1.25 + DOWN, radius=0.1, color=BLACK)
+        right_eye_pupil = Dot(point=UP * 0.6 + LEFT * 0.65 + DOWN, radius=0.1, color=BLACK)
+        
+        # Add small circle in the middle of each pupil (glints)
+        left_eye_glint = Dot(point=UP * 0.6 + LEFT * 1.25 + DOWN, radius=0.03, color=WHITE, fill_opacity=0.8)
+        right_eye_glint = Dot(point=UP * 0.6 + LEFT * 0.65 + DOWN, radius=0.03, color=WHITE, fill_opacity=0.8)
+        
+        # Group the eyes together for easier manipulation
+        eyes = VGroup(
+            left_eye_white, right_eye_white, 
+            left_eye_pupil, right_eye_pupil,
+            left_eye_glint, right_eye_glint
+        )
+        
+        # Assemble the bot from the μ symbol and the eyes.
+        # Scale the entire bot up by 1.5.
+        bot_body = VGroup(mu, eyes).scale(1.2)
+        
+        # Mouth expressions (arc for different moods)
+        happy_mouth = Arc(radius=0.2, start_angle=-3*PI/4, angle=2*PI/4).set_color(WHITE).move_to(DOWN * 0.9 + LEFT).scale(1.2)
+        sad_mouth = Arc(radius=0.2, start_angle=PI/4, angle=2*PI/4).set_color(WHITE).move_to(DOWN * 0.9 + LEFT).scale(1.2)
+        thinking_mouth = Line(start=LEFT * 0.15 + DOWN * 0.9 + LEFT, end=RIGHT * 0.15 + DOWN * 0.9 + LEFT).set_color(WHITE).scale(1.2)
+        
+        # Assemble complete bot expressions using the scaled bot body
+        bot_thinking = VGroup(bot_body, thinking_mouth).to_edge(DL)
+        bot_happy = VGroup(bot_body.copy(), happy_mouth).to_edge(DL)
+        bot_sad = VGroup(bot_body.copy(), sad_mouth).to_edge(DL)
+        
+                # Thought bubbles (dots leading to cloud)
+        dot1 = Dot(radius=0.08, color=WHITE).next_to(bot_thinking, UR, buff=0.1)
+        dot2 = Dot(radius=0.12, color=WHITE).next_to(dot1, UR, buff=0.2)
+        dot3 = Dot(radius=0.16, color=WHITE).next_to(dot2, UR, buff=0.2)
+
+        # Thinking cloud (Rounded Rectangle)
+        thinking_cloud = RoundedRectangle(width=7.5, height=2.5, corner_radius=0.3, color=WHITE, fill_opacity=0.2)
+        thinking_cloud.next_to(dot3, UR)
+        mu_thinking = VGroup(dot1,dot2,dot3, thinking_cloud).next_to(bot_thinking, UR).shift(0.5*DOWN)
+
+        tex1 = Tex("How far can we go ?").scale(0.8).move_to(thinking_cloud.get_center())
+        tex2 = Tex("Researchers have shifted focus", "to a new challange!")
+        tex3 = Tex("Computing individual digits").scale(0.8).move_to(thinking_cloud.get_center())
+        tex2.arrange(DOWN)
+
+        tex2.scale(0.8).move_to(thinking_cloud.get_center())
+        self.play(FadeIn(mu_thinking))
+        self.play(Write(tex1))
+        self.play(Transform(tex1, tex2))
+        self.wait(2)
+
+        self.play(
+                  Transform(tex1, tex3))
+        self.wait()
+
+class BBPAlg(Scene):
+    def construct(self):
+        title = Tex("The BBP Algorithm").scale(1.2).move_to(3*UP)
+        
+        bbp_formula = MathTex(
+                r"\pi = \sum_{k=0}^{\infty} \frac{1}{16^k} \left("
+                r"\frac{4}{8k+1} - \frac{2}{8k+4} - \frac{1}{8k+5} - \frac{1}{8k+6}"
+                r"\right)"
+            ).scale(0.6).next_to(title, DOWN, buff=0.5)
+        
+        image1 = ImageMobject("bbp.jpg").scale(0.55).move_to(1.5*DOWN + 2.5*LEFT)
+        title1 = Tex("Simon Plouffe").scale(0.6).next_to(image1, DOWN)
+        image2 = ImageMobject("bbp2.jpg").scale(0.3).next_to(image1, RIGHT, buff=2)
+        title2 = Tex(" David H. Bailey").scale(0.6).next_to(image2, DOWN)
+
+        # self.add(title, image1, image2, bbp_formula, title1, title2)
+
+        self.play(Write(title),
+                  Write(bbp_formula))
+        self.wait()
+        self.play(FadeIn(image1),
+                  Write(title1),
+                  FadeIn(image2),
+                  Write(title2)
+                  )
+        self.wait(2)
+
+class HexBin(Scene):
+    def construct(self):
+        image1 = ImageMobject("binary.png").scale(2.5)
+        image2 = ImageMobject("hexadecimal.png").scale(2)
+        self.play(FadeIn(image2))
+        self.wait()
+        self.play(FadeOut(image2),
+                  FadeIn(image1))
+        self.wait()
+
