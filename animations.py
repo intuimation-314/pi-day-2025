@@ -672,3 +672,102 @@ class ArctanSeries(Scene):
             term_label = MathTex(rf"y = \sum_{{n=0}}^{{{2*i+1}}} \frac{{(-1)^n x^{{2n+1}}}}{{2n+1}}").scale(0.6).next_to(approx_graph, DOWN, buff=0.3)
         
         self.add(title, formula, axes, arctan_graph, graphs)
+
+class Ramanujan(Scene):
+    def construct(self):
+       image = ImageMobject("ramanujan.png").scale(0.6).to_edge(RIGHT)
+       tex = Tex("The Ramanujan's miraculous formula",color=BLUE).to_edge(UP)
+       formula = MathTex(r"\frac{1}{\pi} = \frac{2\sqrt{2}}{9801} \sum_{n=0}^{\infty} \frac{(4n)! (1103 + 26390n)}{(n!)^4 396^{4n}}").scale(0.8).move_to(LEFT*1.5)
+       tex2 = Tex("Each term adds 8 decimal places!",
+                  "Older formula's(Machin) requires about 20 terms to aachieve the same",
+                  color=BLUE)
+       tex2.arrange(DOWN, aligned_edge=LEFT).scale(0.6).next_to(formula, DOWN, buff=1)
+    #    self.add(image, tex, formula, tex2)
+
+       self.play(FadeIn(image),
+                 Write(tex),
+                 FadeIn(formula))
+       self.wait()
+       self.play(Write(tex2))
+       self.wait()
+
+class Chudnovsky(Scene):
+    def construct(self):
+       image = ImageMobject("chudnovsky.png").scale(0.25).to_edge(LEFT).shift(0.5*RIGHT)
+       
+       tex = Tex("David and Gregory Chudnovsky",color=WHITE).scale(0.5).next_to(image, DOWN)
+       formula = MathTex(r"\frac{1}{\pi} = 12 \sum_{n=0}^{\infty} \frac{(-1)^n (6n)! (13591409 + 545140134n)}{(3n)! (n!)^3 640320^{3n + 3/2}}").scale(0.7).next_to(image, RIGHT, buff=0.5)
+       tex2 = Tex("Each term adds 15 decimal places!",
+                  color=BLUE)
+       tex2.scale(0.6).next_to(formula, DOWN, buff=1)
+       tex3 = Tex("In 1989, Chudnovsky brothers modifed the series even further !", color=BLUE).scale(0.8).to_edge(UP)
+       self.add(image, tex, formula, tex2)
+
+       self.play(Write(tex3),
+                 FadeIn(image),
+                 Write(tex),
+                 FadeIn(formula))
+       self.wait()
+       self.play(Write(tex2))
+       self.wait()
+
+class PiBreakthroughs(Scene):
+    def construct(self):
+        # Introduction Text
+        intro_text = MathTex(
+            r"\text{The modern era began around 1980 when mathematicians}", r"\text{utilized three major breakthroughs:}"
+        ).scale(0.8).arrange(DOWN).to_edge(UP)
+
+        self.play(Write(intro_text))
+        self.wait(1)
+
+        # First Breakthrough: FFT
+        fft_text = MathTex(
+            r"\textbf{1. FFT Mul Algorithm }"
+        ).scale(0.5)
+
+        # Second Breakthrough: High-performance algorithms
+        algo_text = MathTex(
+            r"\textbf{2. High-Performance Algorithms }"
+        ).scale(0.5)
+
+        # Third Breakthrough: Supercomputers
+        supercomputer_text = MathTex(
+            r"\textbf{3. Supercomputer Advancement }"
+        ).scale(0.5)
+
+        # Group the text and arrange it
+        group = VGroup(fft_text, algo_text, supercomputer_text).arrange(DOWN, aligned_edge=LEFT, buff=0.5).move_to(UP)
+
+        # Position the group below the introduction text
+        group.next_to(intro_text, DOWN, buff=0.8)
+
+        image1 = ImageMobject("fft.png").scale(0.75).to_edge(DOWN).shift(LEFT*2 + UP)
+        image2 = ImageMobject("fft2.jpg").scale(1.2).next_to(image1, RIGHT, buff=1.5)
+
+        #supercomputerimage
+        image3 = ImageMobject("super1.png").scale(0.3)
+        image4 = ImageMobject("super2.jpg").scale(0.1)
+        image5 = ImageMobject("super3.jpg").scale(0.2)
+
+        group2 = Group(image3, image4, image5).arrange(RIGHT, buff=0.5).to_edge(DOWN).shift(0.5*UP) 
+        group2.scale(1.2)
+
+        for tex in group:
+         # Fade in the group properly
+         self.play(FadeIn(tex))
+         self.play(tex.animate.set_color(BLUE).scale(1.2))
+         if(tex == fft_text):
+             self.play(FadeIn(image1),
+                       FadeIn(image2))
+             self.wait(2)
+             self.play(FadeOut(image1),
+                   FadeOut(image2))
+         self.wait(2)
+        self.play(FadeIn(group2))
+        self.wait(2)
+
+
+class Blank(Scene):
+    def construct(self):
+        self.wait(2)
