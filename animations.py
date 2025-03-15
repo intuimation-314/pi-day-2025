@@ -12,8 +12,10 @@ class PiIntroScene(Scene):
         pi_symbol = MathTex(r"\pi").scale(2).set_color(BLUE)
         # Display the introduction text
         pi_intro_text = Tex(
-                r"The most fundamental mathematical constants we encounter early in our life."
-             ).scale(0.8).set_color(WHITE).to_edge(UP)
+                "The most fundamental mathematical constants,", 
+                "we encounter early in our life."
+             ).arrange(DOWN)
+        pi_intro_text.to_edge(UL)
         
         # Animation: π grows larger
         self.play(Write(pi_symbol),
@@ -95,6 +97,55 @@ class PiIntroScene(Scene):
         self.play(Create(leftover), Write(leftover_text), Create(leftover_brace))
         self.wait(2)
 
+class PiInNature(Scene):
+    def construct(self):
+        tex = Tex("\"Found Everywhere in Nature\"").to_edge(UP)
+        self.add(tex)
+        self.wait(2)
+
+class EngineerScene(Scene):
+    def construct(self):
+        # Load engineer and mathematician images (keeping your original positions)
+        engineer = ImageMobject("engineer.png").to_edge(LEFT).scale(0.8) # Engineer at Upper Left
+        
+        # Titles above the images
+        engineer_title = Tex("Engineers", color=BLUE).scale(2).to_edge(UP)
+        
+        # Create text labels for their respective pi usage
+        engineer_pi_approx = MathTex(r"\pi \approx 3.14 \text{ or } \pi \approx 3", color=WHITE)
+        engineer_pi_approx2 = Tex("\"To the naked eye, it would still look perfect\"").next_to(engineer_pi_approx, DOWN, buff=1).shift(DOWN)
+        engineer_pi_approx.next_to(engineer, RIGHT, buff=1)  # Positioned to the right of the engineer
+
+        # Add everything to the scene
+        # self.add(engineer, engineer_title, engineer_pi_approx, engineer_pi_approx2)
+        self.play(FadeIn(engineer),
+                  Write(engineer_title),
+                  FadeIn(engineer_pi_approx),
+                  Write(engineer_pi_approx2))
+
+class MathScene(Scene):
+    def construct(self):
+        # Load engineer and mathematician images (keeping your original positions)
+        mathematician = ImageMobject("mathematician.png").to_edge(DR).shift(RIGHT)  # Mathematician at Down Right
+        mathematician_title = Tex("\"Mathematicians\"").scale(1.8).to_edge(UP)
+      
+        math_pi_precise = VGroup(
+            Tex(r"3.1415926535 8979323846 2643383279"),
+            Tex(r"5028841971 6939937510 5820974944"),
+            Tex(r"5923078164 0628620899 8628034825"),
+            Tex(r"3421170679\ldots")
+        ).scale(0.8)
+        math_pi_precise.arrange(DOWN).move_to(2 * LEFT + DOWN) # Positioned to the left of the mathematician
+        infinite = Tex("Infinite Precision", color = BLUE).next_to(math_pi_precise, UP, buff=0.5)
+        
+        # Add everything to the scene
+        # self.add(engineer, engineer_title, engineer_pi_approx, engineer_pi_approx2)
+        self.play(FadeIn(mathematician),
+                  FadeIn(mathematician_title),
+                  Write(infinite),
+                  Write(math_pi_precise),
+                )
+
 class ThinkingMuBot(Scene):
     def construct(self):
         # Bot's body: μ symbol as the body of the bot
@@ -148,44 +199,27 @@ class ThinkingMuBot(Scene):
         thinking_cloud = RoundedRectangle(width=7.5, height=2.5, corner_radius=0.3, color=WHITE, fill_opacity=0.2)
         thinking_cloud.next_to(dot3, UR)
         mu_thinking = VGroup(dot1,dot2,dot3, thinking_cloud).next_to(bot_thinking, UR)
+        mu_thinking.shift(RIGHT)
 
         tex1 = Tex("That's not how we compute PI").scale(0.8).move_to(thinking_cloud.get_center())
         tex2 = Tex("Physical measurements always", "lead to an error!")
-        tex3 = Tex("Engineers might use 3.14 or even 3").scale(0.8).move_to(thinking_cloud.get_center())
-        tex4 = Tex("But Mathematicians ?", "They want infinite precision").scale(0.8).move_to(thinking_cloud.get_center())
         tex2.arrange(DOWN)
-        tex4.arrange(DOWN).move_to(thinking_cloud.get_center())
 
         tex2.scale(0.8).move_to(thinking_cloud.get_center())
-        self.play(FadeIn(bot_thinking), 
-                  FadeIn(mu_thinking))
-        self.play(blink(), run_time = 0.5)
+        self.play( FadeIn(mu_thinking))
         self.play(Write(tex1))
-        self.play(blink(), run_time=0.5)
         self.play(Transform(tex1, tex2))
         self.wait(2)
 
-        engineer = ImageMobject("image.png").scale(0.8).to_edge(DR)
-        self.play(FadeIn(engineer),
-                  Transform(tex1, tex3))
-        self.play(blink(), run_time=0.5)
-        self.wait()
 
-        math = ImageMobject("mathematician.png").scale(0.8).to_edge(DR)
-        math.shift(RIGHT)
-        self.play(FadeOut(engineer),
-                  FadeIn(math),
-                  Transform(tex1, tex4))
-        self.play(blink(), run_time=0.5)
-
-class PiFormulas(Scene):
+class PiUncanny(Scene):
     def construct(self):
         # Load 4 uncanny images (assuming file names are "phase1.png", "phase2.png", etc.)
         images = [
-            ImageMobject("phase1.png").scale(0.8),
-            ImageMobject("phase2.png").scale(0.8),
-            ImageMobject("phase3.png").scale(0.95).move_to(DOWN),
-            ImageMobject("phase4.png").scale(0.8),
+            ImageMobject("Phase_1.png").scale(0.8),
+            ImageMobject("Phase_2.png").scale(0.8),
+            ImageMobject("Phase_3.png").scale(0.95).move_to(DOWN),
+            ImageMobject("Phase_4.png").scale(0.8),
         ]
 
         # Define Pi formulas for each phase
@@ -225,7 +259,7 @@ class PiComputation(Scene):
         self.wait(2)
         self.play(FadeOut(chudnovsky_formula), FadeOut(title))
         
-        image1 = ImageMobject("google.png").scale(2).to_edge(UP)
+        image1 = ImageMobject("google.png").scale(1.6).move_to(2*UP)
        
         pi_digits_text = Tex("- 100 Trillion Digits")
         days_text = Tex("- 157 days of computation!")
@@ -235,7 +269,7 @@ class PiComputation(Scene):
                       storage_text, 
                       electricity_text).arrange(DOWN, buff = 0.3, aligned_edge = LEFT)
         text.next_to(image1, DOWN)
-
+        text.shift(RIGHT)
         self.play(FadeIn(image1))
         self.wait()
         self.play(FadeIn(text[0]))
@@ -247,10 +281,9 @@ class PiComputation(Scene):
             Tex(r"8214808651 3282306647 0938446095 5058223172 5359408128"),
             Tex(r"4811174502 8410270193 8521105559 6446229489 5493038196"),
             Tex(r"2874406566 9234603486 1045432664 8213393607 2602491412"),
-            Tex(r"7372458700 6606315588 1748815209 2096282925 4091715364"),
-            Tex(r"3678925903 6001133053 0548820466 5213841469 5194151160\ldots")
+            Tex(r"7372458700 6606315588 1748815209 2096282925 4091715364\ldots")
         ).scale(0.65)
-        pi_digits.arrange(DOWN, buff = 0.5, center=False, aligned_edge=LEFT)
+        pi_digits.arrange(DOWN, buff = 0.5, aligned_edge=LEFT)
         pi_digits.next_to(pi_digits_text, DOWN, buff=0.5)
 
         # Animate the display of π digits
@@ -314,107 +347,24 @@ class ThinkingMuBot2(Scene):
         thinking_cloud = RoundedRectangle(width=7.5, height=2.5, corner_radius=0.3, color=WHITE, fill_opacity=0.2)
         thinking_cloud.next_to(dot3, UR)
         mu_thinking = VGroup(dot1,dot2,dot3, thinking_cloud).next_to(bot_thinking, UR)
+        mu_thinking.shift(RIGHT)
 
         tex1 = Tex("Why ??").scale(0.8).move_to(thinking_cloud.get_center())
         tex2 = Tex("Why PI get so ridiculously", "complicated?")
+        tex0 = Tex("Precision").scale(0.8).move_to(thinking_cloud.get_center())
         tex3 = Tex("Why more and more digits?").scale(0.8).move_to(thinking_cloud.get_center())
         tex2.arrange(DOWN)
 
         tex2.scale(0.8).move_to(thinking_cloud.get_center())
-        self.play(FadeIn(bot_thinking), 
-                  FadeIn(mu_thinking))
-        self.play(blink(), run_time = 0.5)
+        self.play(FadeIn(mu_thinking))
         self.play(Write(tex1))
-        self.play(blink(), run_time=0.5)
         self.play(Transform(tex1, tex2))
+        self.wait()
+        self.play(Transform(tex1, tex0))
+        self.wait()
+        self.play(Transform(tex1,tex3))
         self.wait(2)
 
-
-class PiRatio(Scene):
-    def construct(self):
-        # Define circle and diameter
-        circle = Circle(radius=2, color=BLUE)
-        circle.move_to(UP)  # Move the circle up slightly
-        diameter = Line(circle.get_left(), circle.get_right(), color=YELLOW)
-
-        # Define bottom line (equal to circumference)
-        circumference_length = 2 * PI * circle.radius
-        bottom_line = Line(circle.get_left(), circle.get_left() + RIGHT * circumference_length, color=BLUE)
-        bottom_line.move_to(DOWN * 2.5)  # Move below the circle
-
-        # Create labels
-        pi_text = MathTex(r"\pi = \frac{C}{d} \approx 3.14").to_edge(LEFT)
-        d_text = MathTex(r"d").next_to(diameter, DOWN)
-        c_text = MathTex(r"C").next_to(circle, RIGHT)
-        unfolded_text = MathTex(r"\text{Unfolding the circumference}").next_to(bottom_line, UP)
-
-        # Show the circle and diameter
-        self.play(Create(circle), Create(diameter))
-        self.play(Write(pi_text), Write(d_text))
-
-        self.play(Write(c_text))
-        
-        # Unwrap the circle: Transform the perimeter into the bottom line
-        self.play(Transform(circle.copy(), bottom_line), Write(unfolded_text), run_time=3)
-
-        # Show three diameters fitting in
-        for i in range(3):
-            segment = Line(bottom_line.get_start() + i * diameter.get_length() * RIGHT,
-                           bottom_line.get_start() + (i + 1) * diameter.get_length() * RIGHT,
-                           color=YELLOW)
-            brace = Brace(segment, DOWN, buff=0.5, color=RED)
-            tex = MathTex(r"d").next_to(brace, DOWN)
-            self.play(Create(segment), FadeIn(brace), Create(tex))
-
-        # Show the tiny leftover part (~0.14 of the diameter)
-        leftover = Line(segment.get_end(), bottom_line.get_end(), color=BLUE)
-        leftover_brace = Brace(leftover, DOWN, color = RED)
-        leftover_text = MathTex(r"\approx 0.14 d").next_to(leftover, UP)
-
-        self.play(Create(leftover), Write(leftover_text), Create(leftover_brace))
-
-        self.wait(2)
-
-class EngineerScene(Scene):
-    def construct(self):
-        # Load engineer and mathematician images (keeping your original positions)
-        engineer = ImageMobject("engineer2.png").to_edge(LEFT) # Engineer at Upper Left
-        
-        # Titles above the images
-        engineer_title = Tex("Engineers", color=BLUE).scale(2).to_edge(UP)
-        mathematician_title = Text("Mathematicians", font_size=36, color=WHITE).move_to(3*RIGHT)
-        
-        # Create text labels for their respective pi usage
-        engineer_pi_approx = MathTex(r"\pi \approx 3.14 \text{ or } \pi \approx 3", color=WHITE)
-        engineer_pi_approx2 = Tex("\"To the naked eye, it would still look perfect\"").next_to(engineer_pi_approx, DOWN, buff=1).shift(DOWN)
-        engineer_pi_approx.next_to(engineer, RIGHT, buff=1)  # Positioned to the right of the engineer
-
-        # Add everything to the scene
-        # self.add(engineer, engineer_title, engineer_pi_approx, engineer_pi_approx2)
-        self.play(FadeIn(engineer),
-                  Write(engineer_title),
-                  FadeIn(engineer_pi_approx),
-                  Write(engineer_pi_approx2))
-
-class MathScene(Scene):
-    def construct(self):
-        # Load engineer and mathematician images (keeping your original positions)
-        mathematician = ImageMobject("math.png").to_edge(DR).shift(RIGHT)  # Mathematician at Down Right
-        mathematician_title = Tex("Mathematicians").scale(2).to_edge(UP)
-        
-        math_pi_precise = VGroup(
-            Tex(r"3.1415926535 8979323846 2643383279"),
-            Tex(r"5028841971 6939937510 5820974944 \ldots")
-        ).scale(0.8)
-        math_pi_precise.arrange(DOWN).move_to(2 * LEFT) # Positioned to the left of the mathematician
-        
-        # Add everything to the scene
-        # self.add(engineer, engineer_title, engineer_pi_approx, engineer_pi_approx2)
-        self.play(FadeIn(mathematician),
-                  FadeIn(mathematician_title),
-                  Write(math_pi_precise),
-                )
-        
 class PiTimelines(Scene):
     def construct(self):
         # Create a vertical timeline on the left (from (-6, 3, 0) to (-6, -3, 0))
@@ -540,13 +490,30 @@ class ArchimedesPi(Scene):
                   Write(numeric_bounds))
         self.wait(2)
 
-        tex = Tex("1630").to_edge(UP)
-        tex1 = Tex("Millions of sides")
-
         self.play(FadeOut(progression),
-                  FadeOut(bounds),
-                  FadeOut(numeric_bounds))
+        FadeOut(bounds),
+        FadeOut(numeric_bounds))
         self.wait()
+
+
+        tex = Tex(r"By 1630, this method could determine $\pi$ to $\textbf{39 decimal places}$").to_edge(UP)         
+        pi_text = MathTex(
+            r"\pi = 3.1415926535"
+            r"8979323846"
+            r"2643383279"
+            r"5028841971"
+        ) # Adjust scale if needed
+        
+        tex1 = Tex("Millions of sides!").to_edge(DOWN)
+        # Surround it with a rectangle for emphasis
+        rect = SurroundingRectangle(pi_text, color=YELLOW)
+         
+        self.play(Write(tex))
+        # Display text and rectangle
+        self.play(Write(pi_text), Create(rect))
+        self.play(Write(tex1))
+        self.wait(2)
+
 
 class Era2(Scene):
     def construct(self):
@@ -835,7 +802,20 @@ class FuturOfPI(Scene):
         self.play(
                   Transform(tex1, tex3))
         self.wait()
+        self.play(FadeOut(tex1),
+                  FadeOut(title))
+        #why pi part?
+        text1 = Tex("We don't actually need trillion digits!").scale(0.8).move_to(thinking_cloud.get_center())
+        text2 = Tex("10 decimal digits are enough for", "scientific and engineering pusposes")
+        text2.arrange(DOWN)
+        text2.scale(0.8).move_to(thinking_cloud.get_center())
 
+        self.play(Write(text1))
+        self.wait()
+        self.play(Transform(text1, text2))
+        self.wait()
+        
+        
 class BBPAlg(Scene):
     def construct(self):
         title = Tex("The BBP Algorithm").scale(1.2).move_to(3*UP)
@@ -863,13 +843,305 @@ class BBPAlg(Scene):
                   )
         self.wait(2)
 
-class HexBin(Scene):
-    def construct(self):
-        image1 = ImageMobject("binary.png").scale(2.5)
-        image2 = ImageMobject("hexadecimal.png").scale(2)
-        self.play(FadeIn(image2))
-        self.wait()
-        self.play(FadeOut(image2),
-                  FadeIn(image1))
-        self.wait()
 
+class TimelinePiEvolution(Scene):
+    def construct(self):
+        # Create a number line from 250 BCE (-250) to 2025
+        timeline = NumberLine(
+            x_range=[-250, 2025, 250],  # Marks every 250 years
+            length=12,  # Length of number line
+            include_numbers=True,
+            color=WHITE
+        )
+        timeline.shift(DOWN * 1.5)
+
+        # Title
+        title = Tex("Time Progression: 250 BCE to Present").scale(1).to_edge(UP)
+
+        # Add timeline and title
+        self.play(Write(title))
+        self.play(Create(timeline))
+        self.wait(1)
+
+        # Moving indicator for time
+        dot = Dot(color=RED).move_to(timeline.n2p(-250))
+        year_label = Integer(-250).next_to(dot, UP)
+
+        self.play(FadeIn(dot, year_label))
+        self.wait(1)
+
+        # Pi digits at different historical points
+        pi_values = [
+            "3",                           # 250 BCE - Archimedes
+            "3.14",                        # 1500s - Early modern approximations
+            "3.14159",                     # 1700s - Newton's work
+            "3.1415926535",                # 1800s - More precision
+            "3.141592653589793",           # 1900s - Calculus-based improvements
+            "3.14159265358979323846",      # 1950s - Early computers
+            "3.1415926535897932384626433", # 2000s - Supercomputers
+            "3.1415926535897932384626433832795028841971"  # 2020s - Trillions of digits
+        ]
+
+        # Label to show pi digits
+        pi_label = MathTex(r"\pi = " + pi_values[0] + r"\ldots").scale(0.8).to_edge(LEFT)
+        self.play(Write(pi_label))
+
+        # Years corresponding to the above π values
+        years = [-250, 1500, 1700, 1800, 1900, 1950, 2000, 2025]
+
+        # Animate the timeline progression and π digits increasing
+        for i in range(1, len(years)):
+            self.play(
+                dot.animate.move_to(timeline.n2p(years[i])),
+                ChangeDecimalToValue(year_label, years[i]),
+                Transform(pi_label, MathTex(r"\pi = " + pi_values[i] + r"\ldots").scale(0.8).to_edge(LEFT)),
+                rate_func=smooth,
+                run_time=2
+            )
+            self.wait(1)
+
+        self.wait(2)
+
+class WhyComputePi(Scene):
+    def construct(self):
+        # Title at the top
+        title = MathTex(r"\text{Why Do We Compute } \pi \text{ to Trillions of Digits?}").scale(0.8).to_edge(UP)
+        self.play(Write(title))
+        self.wait(1)
+
+        # First Reason: Testing Computers & Algorithms
+        testing_text = MathTex(
+            r"\textbf{1. Testing Computers and Algorithms}"
+        ).scale(0.6)
+
+        # Second Reason: The Unsolved Mysteries of π
+        mystery_text = MathTex(
+            r"\textbf{2. The Unsolved Mysteries of } \pi"
+        ).scale(0.6)
+
+        # Third Reason: The Competitive & Cultural Appeal
+        competition_text = MathTex(
+            r"\textbf{3. The Competitive and Cultural Appeal}"
+        ).scale(0.6)
+
+        # Arrange all text in a vertical list
+        group = VGroup(testing_text, mystery_text, competition_text).arrange(DOWN, aligned_edge=LEFT, buff=0.5).move_to(UP * 0.5)
+
+        # Position below the title
+        group.next_to(title, DOWN, buff=0.8)
+
+        for tex in group:
+            self.play(FadeIn(tex))
+            self.play(tex.animate.set_color(BLUE).scale(1.2))
+        self.wait(2)
+
+class PiFinale(Scene):
+    def construct(self):
+        # Glowing Pi Symbol
+        pi_symbol = MathTex(r"\pi").scale(4).set_color(YELLOW)
+        self.play(Write(pi_symbol))
+        self.wait(1)
+
+        # Expanding Digits of Pi
+        pi_digits = MathTex(
+            "3.1415926535 8979323846 2643383279 5028841971 6939937510",
+            "5820974944 5923078164 0628620899 8628034825 3421170679...",
+        ).scale(0.7)
+        pi_digits.move_to(DOWN * 1.5)
+
+        self.play(Write(pi_digits), run_time=2)
+        self.wait(1)
+
+        # Timeline & Historical Figures
+        timeline = NumberLine(
+            x_range=[-2000, 2025, 500], length=10,
+            include_numbers=True, include_ticks=True
+        ).move_to(UP * 2)
+
+        self.play(Create(timeline))
+        self.wait(1)
+
+        # Historical Mathematicians (Faint Appearances)
+        archimedes = Tex("Archimedes").scale(0.6).set_opacity(0.5).move_to(LEFT * 3 + UP * 1.5)
+        ramanujan = Tex("Ramanujan").scale(0.6).set_opacity(0.5).move_to(RIGHT * 3 + UP * 1.5)
+        chudnovsky = Tex("Chudnovsky").scale(0.6).set_opacity(0.5).move_to(UP * 3)
+
+        self.play(FadeIn(archimedes, ramanujan, chudnovsky), run_time=2)
+        self.wait(1)
+
+        # Transform to Happy Pi Day Message
+        happy_pi = Tex("Happy ", r"$\pi$", " Day!").scale(1.5).set_color(ORANGE).move_to(DOWN * 2)
+        self.play(Transform(pi_symbol, happy_pi))
+        self.wait(1)
+
+        # Closing Message
+        closing_message = Tex(
+            "Thank you for watching!", 
+            "Check out sources in the description."
+        ).arrange(DOWN).scale(0.8).move_to(DOWN * 3)
+
+        self.play(Write(closing_message))
+        self.wait(2)
+
+        # Fade Out
+        self.play(FadeOut(pi_symbol, pi_digits, timeline, archimedes, ramanujan, chudnovsky, happy_pi, closing_message))
+
+class PiSpiralScene(Scene):
+    def construct(self):
+        # Create the central π symbol
+        pi_symbol = MathTex(r"\pi").scale(2).set_color(BLUE)
+        self.play(Write(pi_symbol),
+                  pi_symbol.animate.scale(3))
+        self.wait(1)
+        
+        # Transform to Happy Pi Day Message
+        happy_pi = Tex("Happy ", r"$\pi$", " Day!").scale(1.5).set_color(ORANGE).move_to(2*DOWN)
+
+        # Define the first few digits of π
+        pi_digits = "3.14159265358979323846264338327950288419716939937510"
+        
+        # Spiral Parameters
+        num_digits = len(pi_digits)  # Number of digits to animate
+        spiral_radius = 0.3  # Distance between digits in the spiral
+        spiral_expansion = 0.3  # Factor to increase spacing as it spirals out
+        angle_shift = 0.3  # Angle shift per digit to form a spiral
+        
+        digit_objects = VGroup()
+        
+        for i in range(num_digits):
+            digit_tex = MathTex(pi_digits[i]).scale(0.6).set_color(WHITE)
+            
+            # Define Spiral Position
+            angle = i * angle_shift
+            radius = spiral_radius + i * spiral_expansion
+            x = radius * np.cos(angle)
+            y = radius * np.sin(angle)
+            
+            digit_tex.move_to([x, y, 0])  # Place digits along spiral
+            digit_objects.add(digit_tex)
+
+        # Animate the digits appearing in a spiral motion
+        self.play(LaggedStartMap(FadeIn, digit_objects, lag_ratio=0.05), run_time=3)
+        self.wait(1)
+        self.play(FadeIn(happy_pi))
+        self.wait(1)
+        
+
+class MuBotEndScene(Scene):
+        def construct(self):
+            # Bot's body: μ symbol as the body of the bot
+            mu = MathTex(r"\mu").scale(5).set_color(BLUE).shift(LEFT + DOWN)
+            
+            # Eyes: white ovals for the eyes
+            left_eye_white = Ellipse(width=0.3, height=0.4, color=WHITE, fill_opacity=1).shift(UP * 0.6 + LEFT * 1.25 + DOWN)
+            right_eye_white = Ellipse(width=0.3, height=0.4, color=WHITE, fill_opacity=1).shift(UP * 0.6 + LEFT * 0.65 + DOWN)
+            left_eye_pupil = Dot(point=UP * 0.6 + LEFT * 1.25 + DOWN, radius=0.1, color=BLACK)
+            right_eye_pupil = Dot(point=UP * 0.6 + LEFT * 0.65 + DOWN, radius=0.1, color=BLACK)
+            
+            # Add small circle in the middle of each pupil (glints)
+            left_eye_glint = Dot(point=UP * 0.6 + LEFT * 1.25 + DOWN, radius=0.03, color=WHITE, fill_opacity=0.8)
+            right_eye_glint = Dot(point=UP * 0.6 + LEFT * 0.65 + DOWN, radius=0.03, color=WHITE, fill_opacity=0.8)
+            
+            # Group the eyes together for easier manipulation
+            eyes = VGroup(
+                left_eye_white, right_eye_white, 
+                left_eye_pupil, right_eye_pupil,
+                left_eye_glint, right_eye_glint
+            )
+            
+            # Assemble the bot from the μ symbol and the eyes.
+            # Scale the entire bot up by 1.5.
+            bot_body = VGroup(mu, eyes).scale(1.2)
+            
+            # Mouth expressions (arc for different moods)
+            happy_mouth = Arc(radius=0.2, start_angle=-3*PI/4, angle=2*PI/4).set_color(WHITE).move_to(DOWN * 0.9 + LEFT).scale(1.2)
+            sad_mouth = Arc(radius=0.2, start_angle=PI/4, angle=2*PI/4).set_color(WHITE).move_to(DOWN * 0.9 + LEFT).scale(1.2)
+            thinking_mouth = Line(start=LEFT * 0.15 + DOWN * 0.9 + LEFT, end=RIGHT * 0.15 + DOWN * 0.9 + LEFT).set_color(WHITE).scale(1.2)
+            
+            # Assemble complete bot expressions using the scaled bot body
+            bot_thinking = VGroup(bot_body, thinking_mouth).to_edge(DL)
+            bot_happy = VGroup(bot_body.copy(), happy_mouth).to_edge(DL)
+            bot_sad = VGroup(bot_body.copy(), sad_mouth).to_edge(DL)
+            
+            # Blinking effect using fade-in and fade-out
+            def blink():
+                return AnimationGroup(
+                    FadeOut(VGroup(left_eye_pupil, right_eye_pupil, left_eye_glint, right_eye_glint)),
+                    FadeIn(VGroup(left_eye_pupil, right_eye_pupil, left_eye_glint, right_eye_glint)),
+                    lag_ratio=0.2,
+                )
+            
+                    # Thought bubbles (dots leading to cloud)
+            dot1 = Dot(radius=0.08, color=WHITE).next_to(bot_thinking, UR, buff=0.1)
+            dot2 = Dot(radius=0.12, color=WHITE).next_to(dot1, UR, buff=0.2)
+            dot3 = Dot(radius=0.16, color=WHITE).next_to(dot2, UR, buff=0.2)
+
+            # Thinking cloud (Rounded Rectangle)
+            thinking_cloud = RoundedRectangle(width=7.5, height=2.5, corner_radius=0.3, color=WHITE, fill_opacity=0.2)
+            thinking_cloud.next_to(dot3, UR)
+            mu_thinking = VGroup(dot1,dot2,dot3, thinking_cloud).next_to(bot_thinking, UR)
+            mu_thinking.shift(RIGHT)
+
+            # Initial Thought Text: "More curious?"
+            thought_text1 = Tex("More curious?").scale(0.9).move_to(thinking_cloud.get_center())
+
+            # Final Thought Text: "Check out books and links!"
+            thought_text2 = Tex("Check out books and links!").scale(0.8).move_to(thinking_cloud.get_center())
+
+            # Group Thought Elements
+            mu_thinking = VGroup(dot1, dot2, dot3, thinking_cloud, thought_text1)
+
+            # Animate Mu Bot with Thought Cloud
+            self.play(FadeIn(mu_thinking))
+            self.wait(2)
+
+            # Transform Text in Cloud
+            self.play(Transform(thought_text1, thought_text2))
+            self.wait(2)
+
+class PiHistorySlopedTimeline(Scene):
+    def construct(self):
+        # Title
+        title = Tex(r"The History of $\pi$ sapns over 4000 years").scale(1.2).to_edge(UP)
+        self.play(Write(title))
+
+        # Define the slope direction (diagonal timeline)
+        start_point = LEFT * 4.5 + DOWN * 2  # Bottom-left
+        end_point = RIGHT * 4.5 + UP * 2  # Top-right
+        timeline = Line(start_point, end_point, color=WHITE)
+
+        # Key Events: (Year, Mathematician, Contribution)
+        events = [
+            ("250 BCE", "Archimedes", r"\text{Polygon Approximation}"),
+            ("1600s", "Isaac Newton", r"\text{Calculus-Based Computation}"),
+            ("1706", "John Machin", r"\text{Machin's Formula}"),
+            ("1910s", "Ramanujan", r"\text{Rapidly Converging Series}"),
+            ("1980s", "Chudnovsky Bros", r"\text{Fastest } \pi \text{ Algorithm}"),
+            ("2022", "Google", r"\text{100 Trillion Digits Computed}"),
+        ]
+
+        # Create event markers along the sloped timeline
+        markers = []
+        texts = []
+        num_events = len(events)
+
+        for i, (year, name, fact) in enumerate(events):
+            # Positioning each event diagonally along the sloped line
+            t = i / (num_events - 1)  # Normalized position along the slope
+            x_pos = interpolate(start_point[0], end_point[0], t)
+            y_pos = interpolate(start_point[1], end_point[1], t)
+            event_pos = np.array([x_pos, y_pos, 0])
+
+            marker = Dot(point=event_pos, color=RED)
+            year_label = Tex(year).scale(0.6).next_to(marker, LEFT if i % 2 == 0 else RIGHT)
+            fact_label = MathTex(fact).scale(0.5).next_to(marker, UP if i % 2 == 0 else DOWN, buff=0.3)
+
+            markers.append(marker)
+            texts.append(VGroup(year_label, fact_label))
+
+        # Animate the events appearing sequentially
+        for i in range(num_events):
+            self.play(FadeIn(markers[i]), Write(texts[i]), run_time=1)
+            self.wait(0.5)
+
+        self.wait(3)
